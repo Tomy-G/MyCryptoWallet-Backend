@@ -81,6 +81,21 @@ class UserService {
             return userPromise;
         });
     }
+    getUserbyUsernameAndPassword(username, pass) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const usersPromise = yield this._userRepository
+                .getUserbyUsernameAndPassword(username, pass)
+                .then((userAsPojo) => {
+                let userAsDTO = this.parsePojoIntoDto(userAsPojo);
+                return userAsDTO;
+            })
+                .catch((error) => {
+                console.error(error);
+                throw error;
+            });
+            return usersPromise;
+        });
+    }
     parseDtoIntoPojo(userDto) {
         return userDto;
     }

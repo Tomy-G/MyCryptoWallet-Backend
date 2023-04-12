@@ -52,5 +52,23 @@ class UserRepository {
             }
         });
     }
+    getUserbyUsernameAndPassword(username, password) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this._userRepository.findOne({
+                    where: {
+                        username: username,
+                        password: password
+                    }
+                });
+                console.log("user:::", user);
+                return user;
+            }
+            catch (error) {
+                console.error(error);
+                return error;
+            }
+        });
+    }
 }
 exports.UserRepository = UserRepository;

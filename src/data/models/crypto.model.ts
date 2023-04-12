@@ -20,7 +20,7 @@ export class CryptoPojo extends Model {
     type: STRING,
     field: 'cryptoname'
   })
-  username: string;
+  cryptoname: string;
   @Column({
     type: NUMBER,
     field: 'value'

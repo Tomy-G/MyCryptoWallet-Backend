@@ -37,4 +37,20 @@ export class UserRepository {
       return undefined;
     }
   }
+
+  async getUserbyUsernameAndPassword(username:string, password:string): Promise<UserPojo> {
+    try {
+        const user = await this._userRepository.findOne({
+            where: {
+                username: username,
+                password: password
+            }
+        });
+        console.log("user:::", user);
+        return user;
+    } catch (error) {
+        console.error(error);
+    return error;
+    }
+}
 }

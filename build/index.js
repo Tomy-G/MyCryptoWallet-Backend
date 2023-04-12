@@ -8,9 +8,14 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
 const crypto_routes_1 = __importDefault(require("./routes/crypto.routes"));
 const crypto_user_routes_1 = __importDefault(require("./routes/crypto_user.routes"));
+const cors_1 = __importDefault(require("cors"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+const allowedOrigins = ['http://localhost:4200'];
+const options = { origin: allowedOrigins
+};
+app.use((0, cors_1.default)(options));
 const port = process.env.PORT;
 app.get('/ping', (_req, res) => {
     res.send('Pong!');

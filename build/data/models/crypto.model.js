@@ -28,7 +28,7 @@ __decorate([
         field: 'cryptoname'
     }),
     __metadata("design:type", String)
-], CryptoPojo.prototype, "username", void 0);
+], CryptoPojo.prototype, "cryptoname", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_1.NUMBER,

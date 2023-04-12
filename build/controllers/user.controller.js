@@ -4,6 +4,20 @@ exports.userController = void 0;
 const user_service_1 = require("../services/user.service");
 const userService = new user_service_1.UserService();
 exports.userController = {
+    getUserbyUsernameAndPassword: (req, res) => {
+        console.log(req.body.username);
+        const username = req.body.username;
+        const pass = req.body.password;
+        userService
+            .getUserbyUsernameAndPassword(username, pass)
+            .then((result) => {
+            res.json(result);
+        })
+            .catch((excepcion) => {
+            console.error(excepcion);
+            res.send(500);
+        });
+    },
     addUser: (req, res) => {
         try {
             //El try catch es para gestionar que el req.body pueda estar mal y provoque un bad request.

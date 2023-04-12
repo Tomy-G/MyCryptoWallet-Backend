@@ -73,6 +73,20 @@ export class UserService {
     return userPromise;
   }
 
+  async getUserbyUsernameAndPassword(username:string, pass:string): Promise<UserDto> {
+    const usersPromise = await this._userRepository
+      .getUserbyUsernameAndPassword(username, pass)
+      .then((userAsPojo) => {
+          let userAsDTO = this.parsePojoIntoDto(userAsPojo);
+        return userAsDTO;
+      })
+      .catch((error) => {
+        console.error(error);
+        throw error;
+      });
+    return usersPromise;
+  }
+
   parseDtoIntoPojo(userDto: NewUserDto): UserPojo {
     return userDto as UserPojo;
   }
